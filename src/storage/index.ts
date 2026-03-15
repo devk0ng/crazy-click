@@ -1,11 +1,11 @@
 import { IScoreRepository } from './IScoreRepository';
 import { LocalStorageRepository } from './LocalStorageRepository';
-import { FirestoreRepository } from './FirestoreRepository';
+import { MongoRepository } from './MongoRepository';
 
 export function createScoreRepository(): IScoreRepository {
   const dbType = import.meta.env.VITE_DB_TYPE;
-  if (dbType === 'firestore') {
-    return new FirestoreRepository();
+  if (dbType === 'mongo') {
+    return new MongoRepository();
   }
   return new LocalStorageRepository();
 }
